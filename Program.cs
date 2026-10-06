@@ -21,7 +21,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "menu",
+    pattern: "menu/{day:alpha=today}",
+    defaults: new { controller = "Menu", action = "Show"});
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.Run();
