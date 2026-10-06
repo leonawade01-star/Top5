@@ -3,10 +3,17 @@
 *@
 @{
 }
-@model string
+@model Dish
 
 <div class="card mb-3">
   <div class="card-body">
-    <h5 class="card-title">@Model</h5>
+        <h5 class="card-title">@Model.Name @if (Model.IsSpicy)
+            {
+                <span class="badge bg-danger">Spicy</span>
+            }
+        </h5>
+        <p class="card-text mb-0">$@Model.Price.ToString("N0")
+            <a class="btn btn-sm btn-outline-primary" asp-controller="Menu" asp-action="Order" asp-route-id="@Model.Id">Order</a>
+        </p>
   </div>
 </div>
